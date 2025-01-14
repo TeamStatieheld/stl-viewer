@@ -7,8 +7,20 @@
 <body>
   <x3d width="100%" height="480px">
     <scene>
-      <inline url="<STL_FILE_URL>"></inline>
+      <inline url="" id="model"></inline>
     </scene>
   </x3d>
+  <script>
+    // Haal de 'file' parameter op uit de URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelUrl = urlParams.get('file');
+
+    // Stel de model-URL in
+    if (modelUrl) {
+      document.getElementById('model').setAttribute('url', modelUrl);
+    } else {
+      document.body.innerHTML = '<h3>Geen geldig STL-bestand opgegeven.</h3>';
+    }
+  </script>
 </body>
 </html>
